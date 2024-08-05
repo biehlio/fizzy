@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = Category.find_or_create_by(category_params)
     @category.save
 
     @category.splats << @splat

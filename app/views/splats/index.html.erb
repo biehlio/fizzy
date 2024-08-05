@@ -75,7 +75,7 @@
         <%= link_to splat, class: "splat__title-link flex align-center gap flex-item-grow" do %>
           <strong><%= splat.title %></strong>
         <% end %>
-        <small class="flex align-center gap flex-item-shrink">
+        <small class="flex align-center gap flex-item-no-shrink">
           <% splat.categories.each do |category| %>
             <%= link_to "# #{ category.title }", splats_path(category_id: category.id) %>
           <% end %>

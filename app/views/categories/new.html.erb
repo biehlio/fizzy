@@ -1,6 +1,12 @@
 <turbo-frame id="new_catgory">
   <%= form_with model: [@splat, @category], data: { turbo_frame: "_top" } do |form| %>
-      <%= form.text_field :title, class: "input borderless", autofocus: "on" %>
+      <%= form.text_field :title, class: "input borderless", autofocus: "on", list: "categories-list" %>
       <%= form.submit "Create Category", hidden: true %>
+
+      <datalist id="categories-list">
+        <%= Category.all.each do | category | %>
+          <option value="<%= category.title %>"></option>
+        <% end %>
+      </datalist>
   <% end %>
 </turbo-frame>
