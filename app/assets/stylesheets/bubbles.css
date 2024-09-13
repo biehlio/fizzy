@@ -118,6 +118,20 @@
     .windshield &:has(.bubble__tag--new) {
       display: none;
     }
+
+    @media (hover: hover) {
+      .windshield .bubble:hover & {
+        transform: translate(-1rem, -1rem);
+      }
+
+      .windshield .bubble:hover & + & {
+        transform: translate(-1.25rem, -1.25rem);
+      }
+
+      .windshield .bubble:hover & + & + & {
+        transform: translate(-1.5rem, -1.5rem);
+      }
+    }
   }
 
   &.bubble__attachment {
