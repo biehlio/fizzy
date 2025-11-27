@@ -35,9 +35,13 @@ module Fizzy
         end
       end
 
-      initializer "fizzy_saas.logging.queenbee_id" do |app|
+      initializer "fizzy_saas.logging.session" do |app|
         ActiveSupport.on_load(:action_controller_base) do
           before_action do
+            if Current.identity.present?
+              logger.struct("  Authorized Identity##{Current.identity.id}", authentication: { identity: { id: Current.identity.id } })
+            end
+
             if Current.account.present?
               logger.struct(account: { queenbee_id: Current.account.external_account_id })
             end
